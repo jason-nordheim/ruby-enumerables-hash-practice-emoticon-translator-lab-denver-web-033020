@@ -8,41 +8,41 @@ end
 
 def construct_translate_hash(orignal_hash)
   result = {
-    :get_meaning => {},
+    :get_meaning => {}, 
     :get_emoticon => {}
   }
 
-  # get the meanings
+  # get the meanings 
   meanings_ary = orignal_hash.map {| key, value | key }
-  # get the english emoticons
+  # get the english emoticons 
   english_emoticons_ary = orignal_hash.map { |key, value | orignal_hash[key][0] }
-  # get the japanese emoticons
+  # get the japanese emoticons 
   japanese_emoticons_ary = orignal_hash.map { |key, value | orignal_hash[key][1]}
 
-  # create the final array
-  i = 0
-  while i < meanings_ary.count do
-    result[:get_meaning][english_emoticons_ary[i]] = meanings_ary[i]
-    result[:get_emoticon][english_emoticons_ary[i]] = japanese_emoticons_ary[i]
-    i += 1
-  end
-  return result
-end
+  # create the final array 
+  i = 0 
+  while i < meanings_ary.count do 
+    result[:get_meaning][japanese_emoticons_ary[i]] = meanings_ary[i] 
+    result[:get_emoticon][english_emoticons_ary[i]] = japanese_emoticons_ary[i] 
+    i += 1  
+  end 
+  return result 
+end 
 
 def get_japanese_emoticon(path, emoticon)
   lib = load_library(path)
   result = lib[:get_emoticon][emoticon]
-  if result == nil
+  if result == nil 
     return "Sorry, that emoticon was not found"
-  end
-  return result
+  end 
+  return result 
 end
 
 def get_english_meaning(path, emoticon)
   lib = load_library(path)
   result = lib[:get_meaning][emoticon]
-  if result == nil
+  if result == nil 
     return "Sorry, that emoticon was not found"
-  end
-  return result
+  end 
+  return result 
 end
