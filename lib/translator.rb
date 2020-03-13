@@ -13,4 +13,4 @@ def get_english_meaning
   # code goes here
 end
 
-pp load_library("./emoticons.yml")
+# pp load_library("./emoticons.yml")
